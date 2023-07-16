@@ -8,7 +8,7 @@ Welcome to my Ansible repository! This repository contains a collection of Ansib
 
 ### 1. Playbooks
 
-- [Install Zabbix](playbooks/zabbix_setup.yml): An Ansible playbook to install Zabbix server and agents on specified hosts, along with necessary configurations.
+- [Install Zabbix](playbooks/zabbix_installation.yml): An Ansible playbook to install Zabbix server and agents on specified hosts, along with necessary configurations.
 
 - [Web Server Deployment](playbooks/web_server.yml): This playbook automates the deployment of a web server (Apache or Nginx) and includes basic web application deployment.
 
