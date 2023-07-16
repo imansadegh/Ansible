@@ -1,0 +1,14 @@
+---
+- name: Install MySQL server and client
+  apt:
+    name:
+      - mysql-server
+      - mysql-client
+    state: present
+
+- name: Start and enable MySQL service
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+
