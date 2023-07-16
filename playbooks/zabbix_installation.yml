@@ -1,0 +1,103 @@
+---
+- name: Install and Configure Zabbix Server
+  hosts: zabbix_server
+  become: true
+
+  vars:
+    zabbix_version: "5.4"  # Set the desired Zabbix version here
+
+  tasks:
+    - name: Install required packages
+      apt:
+        name: 
+          - apache2
+          - mysql-server
+          - mysql-client
+          - php
+          - php-mysql
+          - php-mbstring
+          - php-bcmath
+          - php-gd
+          - php-xml
+          - php-ldap
+          - libcurl4-openssl-dev
+          - snmp
+          - fping
+        state: present
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
+
+    - name: Add Zabbix repository key
+      apt_key:
+        url: https://repo.zabbix.com/zabbix-official-repo.key
+        state: present
+
+    - name: Add Zabbix APT repository
+      apt_repository:
+        repo: "deb https://repo.zabbix.com/zabbix/{{ zabbix_version }}/ubuntu bionic main"
+        state: present
+
+    - name: Install Zabbix Server, Frontend, and Agent
+      apt:
+        name:
+          - zabbix-server-mysql
+          - zabbix-frontend-php
+          - zabbix-apache-conf
+          - zabbix-agent
+        state: present
+
+    - name: Configure MySQL for Zabbix
+      mysql_user:
+        name: zabbix
+        password: "{{ zabbix_db_password }}"
+        priv: "*.*:ALL,GRANT"
+        host: localhost
+        state: present
+
+    - name: Create Zabbix database
+      mysql_db:
+        name: zabbix
+        state: present
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+    - name: Import Zabbix database schema
+      shell: zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -u zabbix -p{{ zabbix_db_password }} zabbix
+      args:
+        executable: /bin/bash
+
+    - name: Configure Zabbix Server
+      lineinfile:
+        path: /etc/zabbix/zabbix_server.conf
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+      loop:
+        - { regexp: '^DBPassword=.*', line: 'DBPassword={{ zabbix_db_password }}' }
+
+    - name: Restart Zabbix Server
+      service:
+        name: zabbix-server
+        state: restarted
+
+    - name: Enable and start Zabbix Agent
+      service:
+        name: zabbix-agent
+        state: started
+        enabled: yes
+
+    - name: Copy Zabbix Apache configuration file
+      copy:
+        src: /etc/zabbix/apache.conf
+        dest: /etc/apache2/sites-available/zabbix.conf
+
+    - name: Enable Zabbix Apache configuration
+      file:
+        src: /etc/apache2/sites-available/zabbix.conf
+        dest: /etc/apache2/sites-enabled/zabbix.conf
+        state: link
+
+    - name: Reload Apache
+      service:
+        name: apache2
+        state: reloaded
+
