@@ -1,0 +1,1 @@
+Replace <zabbix_server_ip_address>, <ssh_username>, and <ssh_password> with the appropriate values for your Zabbix server. If you want to set up Zabbix agents on other hosts, add their details under the [Optional: If you want to set up Zabbix agents on other hosts] section.
