@@ -1,0 +1,17 @@
+---
+- name: Install PHP and required PHP modules
+  apt:
+    name:
+      - php
+      - php-mysql
+      - php-mbstring
+      - php-bcmath
+      - php-gd
+      - php-xml
+      - php-ldap
+    state: present
+
+- name: Restart Apache to apply PHP changes
+  service:
+    name: apache2
+    state: restarted
