@@ -18,7 +18,7 @@ Welcome to my Ansible repository! This repository contains a collection of Ansib
 
 ### 3. Inventory
 
-- [hosts.yml](inventory/hosts.yml): The inventory file that defines the target hosts for the playbooks. Adjust this file to include your own server details.
+- [hosts.yml](Inventory/hosts.yml): The inventory file that defines the target hosts for the playbooks. Adjust this file to include your own server details.
 
 ## How to Use
 
