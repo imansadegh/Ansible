@@ -27,7 +27,7 @@ Open a terminal and run the following commands:
 
 
 `sudo apt update`
-'sudo apt install ansible'
+`sudo apt install ansible`
 ### 2. Installing Ansible on CentOS and RHEL:
 Open a terminal and run the following commands:
 
