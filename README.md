@@ -55,6 +55,7 @@ Open a terminal and run the following command:
 `pip install ansible`<br>
 
 After the installation is complete, you can verify the Ansible version by running:
+
     ```
     ansible --version
 ## How to Use
