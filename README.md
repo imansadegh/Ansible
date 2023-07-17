@@ -51,21 +51,18 @@ Update the package lists and install Ansible with the following commands:
 ### 6. Installing Ansible using Python PIP:
 If your system has Python and PIP installed, you can use PIP to install Ansible globally.
 Open a terminal and run the following command:
-```
 `pip install ansible`<br>
 
 After the installation is complete, you can verify the Ansible version by running:
 
-    ```
-    ansible --version
+`ansible --version`
 
 ## How to Use
 
 1. Clone the repository to your local machine:
 
-   ```
-   git clone https://github.com/imansadegh/ansible.git
-   cd ansible
+   `git clone https://github.com/imansadegh/ansible.git`
+   `cd ansible`
 Ensure you have Ansible installed on your local machine. If not, follow the official Ansible installation guide.
 
 Update the inventory file (inventory/hosts.yml) with your target server details.
