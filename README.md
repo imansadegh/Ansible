@@ -51,7 +51,7 @@ Update the package lists and install Ansible with the following commands:
 ### 6. Installing Ansible using Python PIP:
 If your system has Python and PIP installed, you can use PIP to install Ansible globally.
 Open a terminal and run the following command:
-
+```
 `pip install ansible`<br>
 
 After the installation is complete, you can verify the Ansible version by running:
