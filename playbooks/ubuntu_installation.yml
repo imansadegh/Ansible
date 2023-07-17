@@ -1,0 +1,41 @@
+---
+- name: Install Ubuntu on ESXi
+  hosts: your_esxi_host  # Replace with your ESXi host's IP or hostname
+  gather_facts: False
+  tasks:
+    - name: Create a virtual machine
+      vmware_guest:
+        hostname: your_esxi_host
+        username: your_esxi_username
+        password: your_esxi_password
+        validate_certs: False
+        name: Ubuntu VM
+        state: powered_off
+        template: ubuntu_template  # Replace with the name of your Ubuntu template
+      register: vm_result
+
+    - name: Clone the VM from the template
+      vmware_guest:
+        hostname: your_esxi_host
+        username: your_esxi_username
+        password: your_esxi_password
+        validate_certs: False
+        name: "{{ vm_result.instance.uuid }}"
+        state: present
+        folder: /vmfs/volumes/datastore_name  # Replace with your datastore name
+      delegate_to: localhost
+
+    - name: Power on the VM
+      vmware_guest_powerstate:
+        hostname: your_esxi_host
+        username: your_esxi_username
+        password: your_esxi_password
+        validate_certs: False
+        name: "{{ vm_result.instance.uuid }}"
+        state: powered_on
+      delegate_to: localhost
+
+    - name: Wait for SSH to become available
+      wait_for_connection:
+        timeout: 300
+        delay: 5
