@@ -19,12 +19,65 @@ Welcome to my Ansible repository! This repository contains a collection of Ansib
 ### 3. Inventory
 
 - [hosts.yml](Inventory/hosts.yml): The inventory file that defines the target hosts for the playbooks. Adjust this file to include your own server details.
+## How to Install Ansible
+To install Ansible on different operating systems
+### 1. Installing Ansible on Ubuntu and Debian:
+Open a terminal and run the following commands:
 
+
+Copy code
+sudo apt update
+sudo apt install ansible
+### 2. Installing Ansible on CentOS and RHEL:
+Open a terminal and run the following commands:
+
+
+Copy code
+sudo yum install epel-release
+sudo yum install ansible
+### 3. Installing Ansible on Fedora:
+Open a terminal and run the following command:
+
+
+Copy code
+sudo dnf install ansible
+### 4. Installing Ansible on macOS:
+Ansible can be installed using Homebrew, a popular package manager for macOS. Open a terminal and run the following command:
+
+
+Copy code
+brew install ansible
+### 5. Installing Ansible on Windows:
+Ansible can be installed on Windows using the Windows Subsystem for Linux (WSL). Follow these steps:
+
+Install WSL following the official documentation: https://docs.microsoft.com/en-us/windows/wsl/install
+
+Once you have WSL installed, open a terminal within your preferred Linux distribution (e.g., Ubuntu) in WSL.
+
+Update the package lists and install Ansible with the following commands:
+
+
+Copy code
+sudo apt update
+sudo apt install ansible
+### 6. Installing Ansible using Python PIP:
+If your system has Python and PIP installed, you can use PIP to install Ansible globally.
+
+Open a terminal and run the following command:
+
+
+Copy code
+pip install ansible
+After the installation is complete, you can verify the Ansible version by running:
+
+
+Copy code
+ansible --version
 ## How to Use
 
 1. Clone the repository to your local machine:
 
-   ```bash
+   ```
    git clone https://github.com/civiliman/ansible.git
    cd ansible
 Ensure you have Ansible installed on your local machine. If not, follow the official Ansible installation guide.
@@ -33,7 +86,7 @@ Update the inventory file (inventory/hosts.yml) with your target server details.
 
 Run the desired playbook using the ansible-playbook command. For example, to install Zabbix:
 
-bash
+
 Copy code
 ansible-playbook playbooks/zabbix_installation.yml
 Enjoy the automation! Sit back and relax while Ansible takes care of the server setup and configuration.
