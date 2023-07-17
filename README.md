@@ -55,15 +55,15 @@ Open a terminal and run the following command:
 `pip install ansible`<br>
 
 After the installation is complete, you can verify the Ansible version by running:
-
-`ansible --version`<br>
+```
+ ansible --version
 ## How to Use
 
 1. Clone the repository to your local machine:
 
    ```
-   `git clone https://github.com/civiliman/ansible.git`
-   `cd ansible`
+   git clone https://github.com/civiliman/ansible.git
+   cd ansible
 Ensure you have Ansible installed on your local machine. If not, follow the official Ansible installation guide.
 
 Update the inventory file (inventory/hosts.yml) with your target server details.
