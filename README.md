@@ -62,7 +62,7 @@ After the installation is complete, you can verify the Ansible version by runnin
 1. Clone the repository to your local machine:
 
 `git clone https://github.com/imansadegh/ansible.git`<br>
-`cd ansible`
+`cd ansible`<br>
 Ensure you have Ansible installed on your local machine. If not, follow the official Ansible installation guide.
 
 Update the inventory file (inventory/hosts.yml) with your target server details.
