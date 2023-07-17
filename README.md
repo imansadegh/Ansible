@@ -25,27 +25,27 @@ To install Ansible on different operating systems
 Open a terminal and run the following commands:
 
 
-Copy code
+
 sudo apt update
 sudo apt install ansible
 ### 2. Installing Ansible on CentOS and RHEL:
 Open a terminal and run the following commands:
 
 
-Copy code
+
 sudo yum install epel-release
 sudo yum install ansible
 ### 3. Installing Ansible on Fedora:
 Open a terminal and run the following command:
 
 
-Copy code
+
 sudo dnf install ansible
 ### 4. Installing Ansible on macOS:
 Ansible can be installed using Homebrew, a popular package manager for macOS. Open a terminal and run the following command:
 
 
-Copy code
+
 brew install ansible
 ### 5. Installing Ansible on Windows:
 Ansible can be installed on Windows using the Windows Subsystem for Linux (WSL). Follow these steps:
@@ -57,7 +57,7 @@ Once you have WSL installed, open a terminal within your preferred Linux distrib
 Update the package lists and install Ansible with the following commands:
 
 
-Copy code
+
 sudo apt update
 sudo apt install ansible
 ### 6. Installing Ansible using Python PIP:
@@ -66,12 +66,12 @@ If your system has Python and PIP installed, you can use PIP to install Ansible 
 Open a terminal and run the following command:
 
 
-Copy code
+
 pip install ansible
 After the installation is complete, you can verify the Ansible version by running:
 
 
-Copy code
+
 ansible --version
 ## How to Use
 
@@ -87,7 +87,7 @@ Update the inventory file (inventory/hosts.yml) with your target server details.
 Run the desired playbook using the ansible-playbook command. For example, to install Zabbix:
 
 
-Copy code
+
 ansible-playbook playbooks/zabbix_installation.yml
 Enjoy the automation! Sit back and relax while Ansible takes care of the server setup and configuration.
 
