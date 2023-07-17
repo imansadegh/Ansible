@@ -57,7 +57,6 @@ Open a terminal and run the following command:
 After the installation is complete, you can verify the Ansible version by running:
     ```
     ansible --version
-
 ## How to Use
 
 1. Clone the repository to your local machine:
