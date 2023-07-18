@@ -1,0 +1,46 @@
+---
+- name: Install Zabbix in Docker
+  hosts: your_ubuntu_vm  # Replace with the IP or hostname of your Ubuntu VM
+  gather_facts: True
+  become: true
+  tasks:
+    - name: Install Docker Python module
+      pip:
+        name: docker
+        state: present
+
+    - name: Create Docker network
+      docker_network:
+        name: zabbix_network
+        state: present
+
+    - name: Run Zabbix Server container
+      docker_container:
+        name: zabbix_server
+        image: zabbix/zabbix-server-pgsql:latest
+        state: started
+        restart_policy: unless-stopped
+        env:
+          DB_SERVER_HOST: your_database_host
+          POSTGRES_DB: zabbix
+          POSTGRES_USER: your_database_user
+          POSTGRES_PASSWORD: your_database_password
+        networks:
+          - name: zabbix_network
+
+    - name: Run Zabbix Web container
+      docker_container:
+        name: zabbix_web
+        image: zabbix/zabbix-web-nginx-pgsql:latest
+        state: started
+        restart_policy: unless-stopped
+        env:
+          ZBX_SERVER_HOST: zabbix_server
+          DB_SERVER_HOST: your_database_host
+          POSTGRES_DB: zabbix
+          POSTGRES_USER: your_database_user
+          POSTGRES_PASSWORD: your_database_password
+        ports:
+          - "8080:8080"
+        networks:
+          - name: zabbix_network
