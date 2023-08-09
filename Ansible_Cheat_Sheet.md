@@ -9,17 +9,17 @@
 1. In the first we install epel-release after that we need to install python2 and python3.<br>
 2. 
 ```
-yum/apt install ansible<br>
+yum/apt install ansible
 ```
 3. install ssh-keygen on controller and servers<br>
 4. vim ansible.cfg and change this in below to have permission to change root user when you write sudo su<br>
 
 ```
-[privilege_escalation]<br>
-become=true<br>
-become_method=sudo<br>
-become_user=root<br>
-become_ask_pass=false<br>
+[privilege_escalation]
+become=true
+become_method=sudo
+become_user=root
+become_ask_pass=false
 ```
 
 ## Directories
