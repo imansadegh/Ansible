@@ -28,10 +28,30 @@ become_ask_pass=false
  
 ## Commands
 ### ad-hoc
-```ànsible -i [invenotry file] -m [modules] -a [module argument]```<br>
+```ansible -i [invenotry file] -m [modules] -a [module argument]```<br>
 
 with this command you use ping module to check connection between controller and other servers:<br>
 
 ```
 ansible group_name_on_host_file_in_inventory -m ping 
 ```
+for example :
+```
+ansible 192.168.22.214 -m ping
+ansible all -m copy -a 'src=home/user1/ansible/file1 dest=/home'
+ansible 192.168.22.214 -m copy -a 'dest=/home/file1 content="hi" mode=0755''
+ansible 192.168.22.214 -m file -a 'path=/home/file1 state=absent'
+```
+In the first line command you can see all of module in ansible and with the second command you can read about specific module that you want:
+```
+ansible-doc -l
+ansible-doc module_name
+```
+or you can use ansible site:
+https://docs.ansible.com
+
+with this command you use setup module for gathering datas:
+'''
+ansible 192.168.22.214 -m setup -a 'filter=ansible_kernel'
+'''
+
