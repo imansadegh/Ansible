@@ -1,0 +1,8 @@
+- name: first test
+  hosts: 192.168.22.214
+  become: true
+  tasks: 
+  - name: install vim
+    yum: 
+     name=vim 
+     state=latest 

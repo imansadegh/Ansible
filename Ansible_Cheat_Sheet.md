@@ -47,11 +47,28 @@ In the first line command you can see all of module in ansible and with the seco
 ansible-doc -l
 ansible-doc module_name
 ```
-or you can use ansible site:
+or you can use ansible site:<br>
 https://docs.ansible.com
 
 with this command you use setup module for gathering datas:
 '''
 ansible 192.168.22.214 -m setup -a 'filter=ansible_kernel'
 '''
-
+### ansible-playbook commands:
+Playbook use YAML language we use ansible-playbook command for execute a playbook file, then in the first you need yaml file to execute it.<br>
+with this command:
+```
+Ansible-playbook -i inventory playbookfilename
+```
+for example:
+```
+ansible-playbook playbook_test.yaml
+```
+with this command we can check syntax of yaml language:
+```
+ansible-playbook --syntax-check PlayBookFileName
+```
+with this command you can check your yaml file that can run it or not(just for test for example you want to check you have permisson to create file)<br>
+```
+ansible-playbook -C PlayBookFileName
+``` 
