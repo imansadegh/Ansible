@@ -72,3 +72,9 @@ with this command you can check your yaml file that can run it or not(just for t
 ```
 ansible-playbook -C PlayBookFileName
 ``` 
+## Variable
+Priority of writing variables:
+1. create var files / include var
+2. global scope / when you write ansible-playbook after write vars
+3. play scope / on your playbook file you can write vars
+4. host scope {Deprecated} / on host file you can write vars
