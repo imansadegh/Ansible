@@ -1,8 +1,13 @@
 - name: first test
   hosts: 192.168.22.214
+  vars_files: vars.yaml
   become: true
   tasks: 
   - name: install vim
     yum: 
-     name=vim 
-     state=latest 
+     name= vim 
+     state= latest 
+  - name: install {{package}} on {{ansible_all_ipv4_addresses}}  
+    yum:
+     name= "{{package}}"
+     state= latest
