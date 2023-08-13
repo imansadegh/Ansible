@@ -75,6 +75,25 @@ ansible-playbook -C PlayBookFileName
 ## Variable
 Priority of writing variables:
 1. create var files / include var
-2. global scope / when you write ansible-playbook after write vars
+2. global scope / when you write ansible-playbook after write vars on command line
 3. play scope / on your playbook file you can write vars
 4. host scope {Deprecated} / on host file you can write vars
+## Inclusions
+you can break your tasks and create clear yaml file.<br>
+for example:
+```
+Include_vars: task.yaml
+```
+## roles
+Roles let you automatically load related vars, files, tasks, handlers, and other Ansible artifacts based on a known file structure. After you group your content in roles, you can easily reuse them and share them with other users.<br>
+
+By default Ansible will look in each directory within a role for a main.yml file for relevant content (also main.yaml and main):<br>
+
+1. tasks/main.yml - the main list of tasks that the role executes.
+2. handlers/main.yml - handlers, which may be used within or outside this role.
+3. library/my_module.py - modules, which may be used within this role (see Embedding modules and plugins in roles for more information).
+4. defaults/main.yml - default variables for the role (see Using Variables for more information). These variables have the lowest priority of any variables available, and can be easily overridden by any other variable, including inventory variables.
+5. vars/main.yml - other variables for the role (see Using Variables for more information).
+6. files/main.yml - files that the role deploys.
+7. templates/main.yml - templates that the role deploys.(jinja2 format)
+8. meta/main.yml - metadata for the role, including role dependencies and optional Galaxy metadata such as platforms supported.
